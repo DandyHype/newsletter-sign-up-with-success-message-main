@@ -13,17 +13,17 @@
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     @font-face {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto';
       src: url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
       font-weight: 400;
       font-style: normal;
     }
 
     @font-face {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto';
       src: url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
       font-weight: 700;
-      font-style: bold;
+      font-style: bold;}
 
 
     :root {
@@ -46,9 +46,9 @@
 
     main{
       display: grid;
-      grid-template-columns: auto auto;
+      grid-template-columns: 1fr 1fr;
       justify-items: end;
-      gap: 40px;
+      gap: 60px;
       width: 800px;
       margin: 100px auto;
       padding: 20px;
@@ -63,10 +63,72 @@
     section:last-child{
       padding: 30px;
       padding-right: 0;
+      
     }
 
     h1{
-      font-size: 40px;
+      font-size: 48px;
+      color: var(--Dark-Slate-Grey);
+      margin-bottom: 20px;
+    }
+
+
+    p{
+      font-size: 14px;
+      color: var(--Dark-Slate-Grey);
+      margin-bottom: 20px;
+    }
+
+    ul{
+      list-style-image: url(/assets/images/icon-list.svg);
+      list-style-position: inside;
+      padding-left: 0;
+      margin-bottom: 40px;
+    }
+
+    li{
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+
+    form{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label{
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--Dark-Slate-Grey);
+    }
+
+    input{
+      font-size: 14px;
+      line-height: 48px;
+      color: var(--Grey);
+      padding-left: 20px;
+      border: 1px solid var(--Grey);
+      border-radius: 5px;
+    }
+
+    input:hover{
+      cursor: pointer;
+    }
+
+    button{
+      font-size: 14px;
+      line-height: 48px;
+      border: none;
+      color: var(--White);
+      background-color: var(--Dark-Slate-Grey);
+      border-radius: 5px;
+    }
+
+    button:hover{
+      cursor: pointer;
+      background-color: var(--Tomato);
     }
 
     picture, picture>img{
