@@ -23,7 +23,8 @@
       font-family: 'Roboto';
       src: url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
       font-weight: 700;
-      font-style: bold;}
+      font-style: bold;
+    }
 
 
     :root {
@@ -35,19 +36,20 @@
       --White: hsl(0, 0%, 100%);
     }
 
-    *{
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    body{
+    body {
       font-family: 'Roboto', sans-serif;
       background-color: var(--Charcoal-Grey);
     }
 
-    main{
+    main {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      justify-items: end;
       gap: 60px;
       width: 800px;
       margin: 100px auto;
@@ -57,55 +59,66 @@
       border-radius: 20px;
     }
 
-    section:first-child{
+    section:first-child {
       order: 1;
     }
 
-    section:last-child{
+    section:last-child {
       padding: 30px;
       padding-right: 0;
-      
+
     }
 
-    h1{
+    h1 {
       font-size: 48px;
       color: var(--Dark-Slate-Grey);
       margin-bottom: 20px;
     }
 
 
-    p{
+    p {
       font-size: 14px;
       color: var(--Dark-Slate-Grey);
       margin-bottom: 20px;
     }
 
-    ul{
+    ul {
       list-style-image: url(/assets/images/icon-list.svg);
       list-style-position: inside;
       padding-left: 0;
       margin-bottom: 40px;
     }
 
-    li{
+    li {
       font-size: 14px;
       margin-bottom: 10px;
     }
 
 
-    form{
+    form {
       display: flex;
+      position: relative;
       flex-direction: column;
       gap: 10px;
     }
 
-    label{
+    label,
+    form p,
+    span {
       font-size: 12px;
       font-weight: bold;
       color: var(--Dark-Slate-Grey);
     }
 
-    input{
+    .error-message {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: -11px;
+      color: var(--Tomato);
+    }
+
+    input {
       font-size: 14px;
       line-height: 48px;
       color: var(--Grey);
@@ -114,15 +127,24 @@
       border-radius: 5px;
     }
 
-    input:hover{
+    input:hover {
       cursor: pointer;
     }
 
-    input:focus::placeholder{
+    input:focus::placeholder {
       color: transparent;
     }
 
-    button{
+    input[type="email"]:invalid {
+      border: 1px solid var(--Tomato);
+      background-color: hsl(from var(--Tomato) h s l /10%);
+    }
+
+    input[type="email"]:invalid~.error-message {
+      display: block;
+    }
+
+    button {
       font-size: 14px;
       line-height: 48px;
       border: none;
@@ -131,15 +153,41 @@
       border-radius: 5px;
     }
 
-    button:hover{
+    button:hover {
       cursor: pointer;
       background-color: var(--Tomato);
+      box-shadow: 0px 10px 20px 0px var(--Tomato);
     }
 
-    picture, picture>img{
+    picture,
+    picture>img {
       display: block;
-      max-width: 100%;
+      width: 100%;
       height: auto;
+    }
+
+    /* Success message start */
+
+    .success-message-box {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      width: 400px;
+      margin: 100px auto;
+      margin-bottom: 20px;
+      padding: 30px 50px;
+      background-color: var(--White);
+      border-radius: 20px;
+    }
+
+    .success-message-box img {
+      width: 15%;
+      height: auto;
+    }
+
+    .success-message-box h1 {
+      font-size: 40px;
+      margin: 5px 0;
     }
 
     .attribution {
@@ -150,58 +198,111 @@
     .attribution a {
       color: hsl(228, 45%, 44%);
     }
+
+    @media (max-width: 600px) {
+
+      body {
+        margin: 0;
+        background-color: var(--White);
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        grid-template-columns: 1fr;
+        border-radius: 0;
+
+      }
+
+      section:first-child {
+        order: 0;
+      }
+
+      section:last-child {
+        padding: 30px;
+
+      }
+
+      /* Success message start */
+
+      .success-message-box {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        width: auto;
+        margin: 100px 0;
+        margin-bottom: 20px;
+        padding: 30px 20px;
+      }
+
+      .dismiss{
+        margin-top: 200px;
+      }
+    }
   </style>
 </head>
 
 <body>
-<main>
-  <section>
-    <picture>
-      <source media="(min-width: 600px)"  srcset="./assets/images/illustration-sign-up-desktop.svg">
-      <img src="./assets/images/illustration-sign-up-mobile.svg" alt="">
-    </picture>
-  </section>
-  <section>
-    <h1>Stay updated!</h1>
-    <p>Join 60,000+ product managers receiving monthly updates on:</p>
-    <ul>
-      <li>Product discovery and building what matters</li>
-      <li>Measuring to ensure updates are a success</li>
-      <li>And much more!</li>
-    </ul>
-    <form action="submit">
-      <label for="email">Email address</label>
-      <input type="email" id="email" name="email" placeholder="email@company.com">
-      <button>Subscribe to monthly newsletter</button>
-    </form>
-  </section>
-  
-</main>
+  <main>
+    <section>
+      <picture>
+        <source media="(min-width: 600px)" srcset="./assets/images/illustration-sign-up-desktop.svg">
+        <img src="./assets/images/illustration-sign-up-mobile.svg" alt="">
+      </picture>
+    </section>
+    <section>
+      <h1>Stay updated!</h1>
+      <p>Join 60,000+ product managers receiving monthly updates on:</p>
+      <ul>
+        <li>Product discovery and building what matters</li>
+        <li>Measuring to ensure updates are a success</li>
+        <li>And much more!</li>
+      </ul>
+      <form action="submit">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="email@company.com">
+        <p class="error-message">Valid email required</p>
+        <button type="button" onclick="subscribe()" disabled="disabled">Subscribe to monthly newsletter</button>
+      </form>
+    </section>
+
+  </main>
   <!-- Sign-up form start -->
 
-  
 
-  
 
-  
-  
-  
 
-  
-  
 
-  
+
+
+
+
+
+
+
+
 
   <!-- Sign-up form end -->
 
   <!-- Success message start -->
 
-  <!-- Thanks for subscribing!
 
-  A confirmation email has been sent to ash@loremcompany.com.
-  Please open it and click the button inside to confirm your subscription.
+  <div class="success-message-box">
+    <img src="./assets/images/icon-success.svg" alt="">
+    <h1>Thanks for subscribing!</h1>
+    <p class="success-message-text">A confirmation email has been sent to <span></span>
+      Please open it and click the button inside to confirm your subscription.
+    </p>
+    <button class="dismiss" type="button" onclick="dismiss()">Dismiss message</button>
 
-  Dismiss message -->
+  </div>
+
+  <!-- 
+
+  
+
+   -->
 
   <!-- Success message end -->
 
@@ -209,6 +310,33 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="https://github.com/DandyHype">DanDyHype</a>.
   </div>
+
+  <script>
+    const emailInput = document.querySelector("input");
+    const submitButton = document.querySelector("button");
+    const mainElement = document.querySelector('main');
+
+    const successMessage = document.querySelector('.success-message-box');
+    const successMessageEmail = document.querySelector('.success-message-text span')
+    const dismissMessage = document.querySelector('.dismiss');
+
+    function subscribe() {
+      successMessageEmail.innerHTML = emailInput.value + '.';
+      mainElement.style.display = "none";
+      successMessage.style.display = "flex";
+    };
+
+    function dismiss() {
+      mainElement.style.display = "grid";
+      successMessage.style.display = "none";
+    }
+
+    emailInput.addEventListener('input', function () {
+      const isEmailValid = emailInput.checkValidity();
+
+      submitButton.disabled = !isEmailValid;
+    });
+  </script>
 </body>
 
 </html>
